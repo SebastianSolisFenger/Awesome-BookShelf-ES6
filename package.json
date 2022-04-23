@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/SebastianSolisFenger/Awesome-BookShelf-ES6/issues"
   },
-  "homepage": "https://github.com/SebastianSolisFenger/Awesome-BookShelf-ES6#readme"
+  "homepage": "https://github.com/SebastianSolisFenger/Awesome-BookShelf-ES6#readme",
+  "devDependencies": {
+    "hint": "^6.1.11"
+  }
 }
