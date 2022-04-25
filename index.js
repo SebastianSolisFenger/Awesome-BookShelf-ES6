@@ -1,11 +1,13 @@
 import displayActive from './modules/navigate.js';
 import BookShelf from './modules/books.js';
+import { DateTime } from './modules/luxon.js';
 
 const booksContainer = document.getElementById('books-dynamic-container');
 const navMenuItem = document.querySelectorAll('.nav-menu-item');
 const addBookForm = document.getElementById('form-add-book');
 const titleInput = document.getElementById('title-input');
 const author = document.getElementById('author-input');
+const dateLocalBox = document.querySelector('.date-local');
 
 const allAddedBooks = new BookShelf();
 
@@ -28,14 +30,21 @@ function insertBooks() {
   const removeBtns = document.querySelectorAll('.remove-btn');
 
   removeBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      allAddedBooks.removeBook(e.target.dataset.idremove);
+    btn.addEventListener('click', (btn) => {
+      allAddedBooks.removeBook(btn.target.dataset.idremove);
       insertBooks();
     });
   });
 }
 
 insertBooks();
+
+const dateFunction = () => {
+  dateLocalBox.innerHTML = DateTime.now().toLocaleString(
+    DateTime.DATETIME_MED_WITH_SECONDS,
+  );
+};
+setInterval(dateFunction, 1000);
 
 addBookForm.addEventListener('submit', (event) => {
   event.preventDefault();

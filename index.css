@@ -46,6 +46,10 @@ main {
   border-right: 1.5px solid black;
 }
 
+.nav-menu-item {
+  cursor: pointer;
+}
+
 .book-item {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -54,6 +58,12 @@ main {
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+.date-local {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
 }
 
 .book-item:nth-child(odd) {
