@@ -1,6 +1,7 @@
-# Awesome-BookShelf-ES6 // Awesome books: with ES6
+# Awesome-BookShelf-ES6
 
 ![](https://img.shields.io/badge/Microverse-blueviolet)
+
 # Awesome-bookshelf-website
 
 In this project, I have restructured my Awesome books app code. The goal is to make it more organized by using modules. Moreover, I have also practised the ES6 syntax that I have learned in this module.
