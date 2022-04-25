@@ -30,8 +30,8 @@ function insertBooks() {
   const removeBtns = document.querySelectorAll('.remove-btn');
 
   removeBtns.forEach((btn) => {
-    btn.addEventListener('click', (btn) => {
-      allAddedBooks.removeBook(btn.target.dataset.idremove);
+    btn.addEventListener('click', (box) => {
+      allAddedBooks.removeBook(box.target.dataset.idremove);
       insertBooks();
     });
   });
