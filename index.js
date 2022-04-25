@@ -1,2 +1,57 @@
-import navigateTo from "./modules/navigate.js";
+import displayActive from "./modules/navigate.js";
 import BookShelf from "./modules/books.js";
+
+const booksContainer = document.getElementById("books-dynamic-container");
+const navMenuItem = document.querySelectorAll(".nav-menu-item");
+const addBookForm = document.getElementById("form-add-book");
+const titleInput = document.getElementById("title-input");
+const author = document.getElementById("author-input");
+
+const allAddedBooks = new BookShelf();
+
+function insertBooks() {
+  booksContainer.innerHTML = allAddedBooks.books
+    .map(
+      (bookItem, index) => `
+  <div class="book-item"  ><p class='title-author'><strong>"${bookItem.titleInput}" by ${bookItem.author}.</strong></p>
+        <button class='remove-btn' data-idremove="${index}">Remove</button>
+        </div>
+  `
+    )
+    .join("");
+  if (allAddedBooks.books.length === 0) {
+    booksContainer.style.cssText = "border: none;";
+  } else {
+    booksContainer.style.cssText = "border: 3px black solid;";
+  }
+
+  const removeBtns = document.querySelectorAll(".remove-btn");
+
+  removeBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      allAddedBooks.removeBook(e.target.dataset.idremove);
+      insertBooks();
+    });
+  });
+}
+
+insertBooks();
+
+addBookForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const newBooks = {
+    titleInput: titleInput.value,
+    author: author.value,
+  };
+  allAddedBooks.addBook(newBooks);
+  titleInput.value = "";
+  author.value = "";
+  insertBooks();
+  displayActive("books-list");
+});
+
+navMenuItem.forEach((item) => {
+  item.addEventListener("click", () => {
+    displayActive(item.dataset.nameitem);
+  });
+});
