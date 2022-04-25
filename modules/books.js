@@ -13,7 +13,7 @@ export default class BookShelf {
   }
 
   removeBook(bookIndex) {
-    this.books.splice(bookIndex, 2);
+    this.books.splice(bookIndex, 1);
     localStorage.setItem("books", JSON.stringify(this.books));
   }
 }
